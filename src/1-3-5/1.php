@@ -1,47 +1,76 @@
 <?php
 
-class A implements BarC
+interface PriceInterface
 {
-    use C;
+    public function getPrice(): int;
+    public function setPrice(int $price): void;
+}
 
-    public function fooA(): string
+interface QuantityInterface
+{
+    public function getQuantity(): int;
+    public function setQuantity(int $quantity): void;
+}
+
+interface DateCreateInterface
+{
+    public function getDateCreate(): DateTime;
+    public function setDateCreate(DateTime $datetime): void;
+}
+
+trait Price
+{
+    private int $price;
+
+    public function getPrice(): int
     {
-        return __FUNCTION__;
+        return $this->price;
+    }
+
+    public function setPrice(int $price): void
+    {
+        $this->price = $price;
     }
 }
 
-class B implements BarD
+trait Quantity
 {
-    use D;
+    private int $quantity;
 
-    public function fooB(): string
+    public function getQuantity(): int
     {
-        return __FUNCTION__;
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
     }
 }
 
-trait C
+trait DateCreate
 {
-    public function barC(): string
+    private DateTime $dateCreate;
+
+    public function getDateCreate(): DateTime
     {
-        return __FUNCTION__;
+        return $this->dateCreate;
+    }
+
+    public function setDateCreate(DateTime $datetime): void
+    {
+        $this->dateCreate = $datetime;
     }
 }
 
-trait D
+class Packet1 implements PriceInterface, QuantityInterface
 {
-    public function barD(): string
-    {
-        return __FUNCTION__;
-    }
+    use Price;
+    use Quantity;
 }
 
-interface BarC
+class Packet2 implements QuantityInterface, DateCreateInterface
 {
-    public function barC();
-}
-
-interface BarD
-{
-    public function barD();
+    use Quantity;
+    use DateCreate;
 }
