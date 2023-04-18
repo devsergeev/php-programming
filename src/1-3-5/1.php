@@ -12,6 +12,8 @@
 
 interface PriceInterface
 {
+    // public const DEFAULT_PRICE = 1; - Начиная с версии PHP 8.2.0, трейты могут также определять константы
+    // abstract public function getTotalPrice(); - так можно заставить класс реализовать метод
     public function getPrice(): int;
     public function setPrice(int $price): void;
 }
