@@ -10,10 +10,11 @@
 // Имена трейта могут по семантике не подходить для класса (softDelete() delete_at = NOW(), а в Usere надо delete())
 // тогда придется обернуть метод трейта в классе методом delete - вместо этой многословности проще сразу добавить метод
 
+// public const DEFAULT_PRICE = 1; - Начиная с версии PHP 8.2.0, трейты могут также определять константы
+// abstract public function getTotalPrice(); - так можно заставить класс реализовать метод
+
 interface PriceInterface
 {
-    // public const DEFAULT_PRICE = 1; - Начиная с версии PHP 8.2.0, трейты могут также определять константы
-    // abstract public function getTotalPrice(); - так можно заставить класс реализовать метод
     public function getPrice(): int;
     public function setPrice(int $price): void;
 }
