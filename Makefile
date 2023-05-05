@@ -7,3 +7,9 @@ bash:
 
 up:
 	$(docker-compose) up --build -d
+
+down:
+	$(docker-compose) down --remove-orphans
+
+build:
+	$(docker-compose) build
