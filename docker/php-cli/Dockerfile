@@ -14,4 +14,7 @@ RUN apk add --no-cache unzip
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer --quiet
 
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN echo 'phar.readonly=Off' >> $PHP_INI_DIR/conf.d/docker-php-phar-readonly.ini
+
 WORKDIR /app
